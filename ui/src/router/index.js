@@ -1,5 +1,5 @@
-import MainView from '@/views/MainView.vue'
-import LoginView from '@/views/LoginView.vue'
+import MainView from '@/views/main/MainView.vue'
+import LoginView from '@/views/login/LoginView.vue'
 
 export const routes = [{
     path: '/',

@@ -1,10 +1,14 @@
 import Vue from "vue";
 import App from "./App.vue";
 // vue 라우터
-import router from "./router";
 import VueRouter from 'vue-router'
+import {
+  routes
+} from './router';
 // vue 스토어
-import store from "./store";
+import {
+  store
+} from './store';
 // El-elementUI 라이브러리추가
 import ElementUI from 'element-ui';
 // vue 무한스크롤 라이브러리추가
