@@ -11,6 +11,7 @@
     "axios": "^0.19.2",
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.6.4",
+    "element-ui": "^2.13.0",
     "vee-validate": "^3.2.5",
     "vue": "^2.6.11",
     "vue-infinite-loading": "^2.4.5",
