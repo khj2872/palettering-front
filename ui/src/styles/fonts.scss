@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'notokr';
+    src: url('/fonts/notokr-thin.eot');
+    src: url('/fonts/notokr-thin.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/notokr-thin.woff2') format('woff2'),
+         url('/fonts/notokr-thin.woff') format('woff'),
+         url('/fonts/notokr-thin.ttf') format('truetype');
+    font-weight: 300;
+    font-display: fallback;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'notokr';
+    src: url('/fonts/notokr-regular.eot');
+    src: url('/fonts/notokr-regular.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/notokr-regular.woff2') format('woff2'),
+         url('/fonts/notokr-regular.woff') format('woff'),
+         url('/fonts/notokr-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-display: fallback;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'notokr';
+    src: url('/fonts/notokr-bold.eot');
+    src: url('/fonts/notokr-bold.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/notokr-bold.woff2') format('woff2'),
+         url('/fonts/notokr-bold.woff') format('woff'),
+         url('/fonts/notokr-bold.ttf') format('truetype');
+    font-weight: bold;
+    font-display: fallback;
+    font-style: normal;
+}
