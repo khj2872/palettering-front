@@ -11,6 +11,8 @@ import {
 } from './store';
 // El-elementUI 라이브러리추가
 import ElementUI from 'element-ui';
+// KeenUI 라이브러리추가
+import KeenUI from 'keen-ui';
 // vue 무한스크롤 라이브러리추가
 import InfiniteLoading from 'vue-infinite-loading';
 
@@ -20,6 +22,8 @@ import ko from "element-ui/lib/locale/lang/ko";
 
 //element-ui css
 import 'element-ui/lib/theme-chalk/index.css';
+//keen-ui css
+import 'keen-ui/dist/keen-ui.css';
 
 //element-ui 언어설정
 let localLang = {};
@@ -30,6 +34,7 @@ if (localStorage.getItem('lang') === 'en') {
 }
 
 Vue.use(ElementUI, localLang);
+Vue.use(KeenUI);
 Vue.use(VueRouter);
 Vue.use(InfiniteLoading);
 

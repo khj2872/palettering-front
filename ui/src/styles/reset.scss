@@ -1,0 +1,252 @@
+* {
+  outline: none;
+}
+
+html {
+
+  body,
+  div,
+  span,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  abbr,
+  address,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  img,
+  ins,
+  kbd,
+  q,
+  samp,
+  small,
+  strong,
+  sub,
+  sup,
+  var,
+  b,
+  i,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  canvas,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: 100%;
+    vertical-align: baseline;
+  }
+}
+
+html {
+  overflow-y: hidden !important;
+  height: 100%;
+  background-color: #f3f3f3;
+  //IE scrollbar
+  scrollbar-arrow-color: #efefef;
+  scrollbar-track-color: #efefef;
+  scrollbar-base-color: #dfdfdf;
+  scrollbar-face-color: #dfdfdf;
+  scrollbar-darkshadow-color: #dfdfdf;
+  scrollbar-highlight-color: #dfdfdf;
+  scrollbar-shadow-color: #dfdfdf;
+}
+
+// ::-webkit-scrollbar {
+//   width: 6px;
+//   height: 6px;
+//   border: 0;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   background: #c6c6c6;
+//   -webkit-border-radius: 5px;
+//   border-radius: 5px;
+// }
+
+// ::-webkit-scrollbar-track {
+//   margin: 5px;
+//   background: #e3e3e3;
+//   -webkit-border-radius: 0px;
+//   border-radius: 5px;
+// }
+
+// ::-webkit-scrollbar-corner {
+//   background: transparent;
+// }
+// *:hover::-webkit-scrollbar {
+//   width: 10px;
+//   height: 10px;
+// }
+
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  font-family: "notokr", "맑은고딕", "Malgun Gothic" !important;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+::placeholder {
+  font-family: "notokr", "맑은고딕", "Malgun Gothic" !important;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+center {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-size: 100%;
+  text-decoration: none;
+  vertical-align: baseline;
+
+  &:hover,
+  &:focus,
+  &:visited {
+    text-decoration: none;
+  }
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-weight: bold;
+  font-style: italic;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  margin: 1em 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid #cccccc;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+input,
+select,
+button {
+  overflow: hidden;
+  vertical-align: middle;
+  border: none;
+  border-radius: 0px;
+  font-family: "notokr", "맑은고딕", "Malgun Gothic" !important;
+  white-space: nowrap;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+textarea {
+  font-family: "notokr", "맑은고딕", "Malgun Gothic" !important;
+}
+
+button {
+  background: transparent;
+  cursor: pointer;
+}
