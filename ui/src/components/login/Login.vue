@@ -1,6 +1,6 @@
 <template>
   <div>
-    로그인화면
+    <el-input>ddd</el-input>
   </div>
 </template>
 
