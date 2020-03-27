@@ -29,6 +29,7 @@ export const SET_BEFORE_PARAMS = 'main/SET_BEFORE_PARAMS';
 const initialState = () => {
   return {
     data: [],
+    login: ""
   };
 };
 
@@ -66,9 +67,16 @@ const mutations = {
     state.curPage = 0;
     state.data = [];
     state.params = {
-      filter: { regEpoch: { recent: 'week' } },
+      filter: {
+        regEpoch: {
+          recent: 'week'
+        }
+      },
       dsFilter: {},
-      sort: { field: 'mainNo', order: 'DESC' },
+      sort: {
+        field: 'mainNo',
+        order: 'DESC'
+      },
       offset: 0,
       limit: 20
     };
@@ -132,28 +140,44 @@ const mutations = {
 };
 
 const actions = {
-  [SET_INITIAL_STATE]: ({ commit }) => {
+  [SET_INITIAL_STATE]: ({
+    commit
+  }) => {
     commit(MU_INITIAL_STATE);
   },
-  [SET_INITIAL_DATA]: ({ commit }) => {
+  [SET_INITIAL_DATA]: ({
+    commit
+  }) => {
     commit(MU_INITIAL_DATA);
   },
-  [SET_REFRESH]: ({ commit }, value) => {
+  [SET_REFRESH]: ({
+    commit
+  }, value) => {
     commit(MU_REFRESH, value);
   },
-  [SET_STATE]: ({ commit }, value) => {
+  [SET_STATE]: ({
+    commit
+  }, value) => {
     commit(MU_SET_STATE, value);
   },
-  [SET_LOADING]: ({ commit }, loading) => {
+  [SET_LOADING]: ({
+    commit
+  }, loading) => {
     commit(MU_SET_LOADING, loading);
   },
-  [SET_PARAMS]: ({ commit }, param) => {
+  [SET_PARAMS]: ({
+    commit
+  }, param) => {
     commit(MU_SET_PARAMS, param);
   },
-  [SET_DATA]: ({ commit }, response) => {
+  [SET_DATA]: ({
+    commit
+  }, response) => {
     commit(MU_SET_DATA, response);
   },
-  [SET_BEFORE_PARAMS]: ({ commit }, param) => {
+  [SET_BEFORE_PARAMS]: ({
+    commit
+  }, param) => {
     commit(MU_SET_BEFORE_PARAMS, param);
   }
 };

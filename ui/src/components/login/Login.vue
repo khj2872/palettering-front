@@ -16,7 +16,10 @@
             placeholder="비밀번호"
             show-password
           ></el-input>
-          <ui-button class="loginBtn" @click="loginSubmit" :disabled="true"
+          <ui-button
+            class="loginBtn"
+            @click="loginSubmit"
+            :disabled="!loginInfo.id || !loginInfo.passwd"
             >로그인</ui-button
           >
         </div>
@@ -36,6 +39,10 @@
 </template>
 
 <script>
+import axios from "axios";
+import { mapActions, mapGetters, mapMutations } from "vuex";
+import * as login from "@/store/modules/login";
+
 export default {
   name: "Login",
   props: [],
@@ -48,14 +55,47 @@ export default {
       }
     };
   },
-  created() {},
+  created() {
+    this.fetchContacts();
+  },
   destroyed() {},
   mounted() {},
   watch: {},
-  computed: {},
+  computed: {
+    ...mapGetters({
+      g_loginState: login.STATE
+    })
+  },
   methods: {
+    ...mapActions({
+      a_setLoading: login.SET_LOADING,
+      a_setLogin: login.SET_DATA,
+      a_setInitialLogin: login.INITIAL_STATE,
+      a_setSaveUser: login.SET_SAVE_USER // 아이디 저장
+    }),
     loginSubmit() {
-      console.log("로그인");
+      const id = this.loginInfo.id;
+      const pw = this.loginInfo.passwd;
+
+      this.a_setSaveUser(id);
+
+      this.$router.push({
+        name: "main"
+      });
+    },
+    fetchContacts: function() {
+      axios({
+        method: "GET",
+        url: "/api/users?page=2",
+        params: {}
+      })
+        .then(response => {
+          // console.log(response);
+          this.result = response.data;
+        })
+        .catch(ex => {
+          console.log("ERR!!!!! : ", ex);
+        });
     }
   }
 };
