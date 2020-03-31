@@ -1,5 +1,7 @@
 // 로그인 전
 import LoginView from '@/views/login/LoginView.vue'
+import PasswdFindView from '@/views/login/PasswdFindView.vue'
+import JoinView from '@/views/login/JoinView.vue'
 // 로그인 후
 import MainView from '@/views/main/MainView.vue'
 
@@ -14,16 +16,25 @@ export const routes = [{
     }
   },
   {
-    path: '/main',
-    name: "main",
-    component: MainView
-  },
-  {
     path: '/login',
     name: "login",
     component: LoginView
   },
-
+  {
+    path: '/login/passwdFind',
+    name: "passwdFind",
+    component: PasswdFindView
+  },
+  {
+    path: '/login/join',
+    name: "join",
+    component: JoinView
+  },
+  {
+    path: '/main',
+    name: "main",
+    component: MainView
+  },
   {
     path: '/limit',
     name: 'browserLimit',

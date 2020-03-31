@@ -1,10 +1,22 @@
 <template>
   <div class="login-box">
-    <div class="visual-wrap"></div>
+    <div class="visual-wrap">
+      <el-carousel
+        class="slide-area"
+        :arrow="'never'"
+        :interval="5000"
+        height="427px"
+      >
+        <el-carousel-item v-for="itemSrc in slideImg" :key="itemSrc">
+          <img :src="'/images/login/' + itemSrc + '.png'" />
+        </el-carousel-item>
+      </el-carousel>
+    </div>
     <div class="login-wrap">
       <div class="login-area">
         <div class="logo">
-          <img src="/images/logo.png" />
+          <!-- <img src="/images/logo.png" /> -->
+          <Logo :color="''" :width="'191px'" :height="'63px'" />
         </div>
         <div class="input-box">
           <el-input
@@ -17,7 +29,7 @@
             show-password
           ></el-input>
           <ui-button
-            class="loginBtn"
+            class="loginBtn blueBtn"
             @click="loginSubmit"
             :disabled="!loginInfo.id || !loginInfo.passwd"
             >로그인</ui-button
@@ -26,33 +38,47 @@
         <div class="etc-box">
           <div class="dev">또는</div>
           <ui-button class="facebook" type="secondary"
-            >Facebook으로 로그인</ui-button
-          >
+            >Facebook으로 로그인
+          </ui-button>
           <ui-button class="forgot" type="secondary"
-            >비밀번호를 잊으셨나요?</ui-button
+            ><router-link to="/login/passwdFind"
+              >비밀번호를 잊으셨나요?</router-link
+            ></ui-button
           >
         </div>
       </div>
-      <div class="forgot-area">계정이 없으신가요?<span>가입하기</span></div>
+      <div class="forgot-area">
+        계정이 없으신가요?<span
+          ><router-link to="/login/join">가입하기</router-link></span
+        >
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import { mapActions, mapGetters, mapMutations } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import * as login from "@/store/modules/login";
+import Logo from "@/components/common/Logo.vue";
 
 export default {
   name: "Login",
   props: [],
-  components: {},
+  components: { Logo },
   data() {
     return {
       loginInfo: {
         id: "",
         passwd: ""
-      }
+      },
+      slideImg: [
+        "img-login-01",
+        "img-login-02",
+        "img-login-03",
+        "img-login-04",
+        "img-login-05"
+      ]
     };
   },
   created() {
@@ -111,8 +137,19 @@ export default {
   .visual-wrap {
     width: 369px;
     height: 595px;
-    background: url("/images/login-background.png") no-repeat center 0;
+    background: url("/images/login/login-background.png") no-repeat center 0;
     margin-right: 27px;
+    position: relative;
+
+    .slide-area {
+      width: 240px;
+      height: 427px;
+      margin: 83px 0 0 109px;
+    }
+
+    .el-carousel__indicators {
+      display: none !important;
+    }
   }
 
   .login-wrap {
@@ -242,6 +279,14 @@ export default {
         padding-left: 5px;
         cursor: pointer;
         font-weight: bold;
+
+        &:hover {
+          color: #3897f0;
+        }
+
+        > a {
+          color: #3897f0;
+        }
       }
     }
   }
