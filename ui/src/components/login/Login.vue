@@ -14,7 +14,7 @@
     </div>
     <div class="login-wrap">
       <div class="login-area">
-        <div class="logo">
+        <div class="logo-area">
           <!-- <img src="/images/logo.png" /> -->
           <Logo :color="''" :width="'191px'" :height="'63px'" />
         </div>
@@ -166,8 +166,10 @@ export default {
       display: flex;
       flex-direction: column;
 
-      .logo {
-        padding: 0 0 30px;
+      .logo-area {
+        .logo {
+          padding: 0 0 30px;
+        }
       }
 
       .input-box {
