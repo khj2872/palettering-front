@@ -5,14 +5,14 @@
       <div class="info-area">
         <h3>로그인에 문제가 있나요?</h3>
         <p>
-          사용자 이름 또는 이메일을 입력하면 다시 계정에 로그인할 수 있는
-          링크를 보내드립니다.
+          사용자 이름 또는 이메일을 입력하면 다시 계정에 로그인할 수 있는 링크를
+          보내드립니다.
         </p>
       </div>
       <div class="email-area">
         <el-input v-model="email" placeholder="이메일, 전화번호, 사용자 이름" />
-        <ui-button class="login-btn" type="secondary"
-          >로그인 링크 보내기
+        <ui-button class="login-btn" type="secondary" :disabled="linkAbled">
+          로그인 링크 보내기
         </ui-button>
       </div>
       <div class="join-area">
@@ -39,7 +39,15 @@ export default {
   data() {
     return { email: "" };
   },
-  computed: {},
+  computed: {
+    linkAbled() {
+      let disabled = true;
+      if (!!this.email) {
+        disabled = false;
+      }
+      return disabled;
+    }
+  },
   methods: {}
 };
 </script>

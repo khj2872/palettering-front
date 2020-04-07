@@ -181,7 +181,7 @@ a {
   &:focus,
   &:visited {
     text-decoration: none;
-    color: inherit;
+    color: inherit !important;
   }
 }
 

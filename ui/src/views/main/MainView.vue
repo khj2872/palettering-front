@@ -1,26 +1,60 @@
 <template>
-  <div>
-    <Main />
+  <div class="main-layout">
+    <!-- 공통 헤더 영역 -->
+    <div class="header-layout">
+      <Header />
+    </div>
+    <!-- 컨텐츠 영역 -->
+    <perfect-scrollbar class="cont-layout">
+      <router-view class="cont-wrap" />
+    </perfect-scrollbar>
   </div>
 </template>
 
 <script>
-import Main from "@/components/main/Main.vue";
+import Header from "@/components/common/Header.vue";
 
 export default {
   name: "MainView",
-  props: [],
-  components: { Main },
   data() {
     return {};
   },
-  created() {},
-  destroyed() {},
-  mounted() {},
-  watch: {},
+  components: { Header },
   computed: {},
-  methods: {}
+  methods: {},
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.main-layout {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fafafa;
+
+  .header-layout {
+    width: 100%;
+    height: 54px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dbdbdb;
+    display: inline-flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+  }
+
+  .cont-layout {
+    margin-top: 54px;
+    height: calc(100vh - 54px);
+    width: 100%;
+
+    .cont-wrap {
+      width: 953px;
+      margin: 0 auto;
+    }
+  }
+}
+</style>

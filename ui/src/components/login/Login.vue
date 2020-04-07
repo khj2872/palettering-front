@@ -31,7 +31,7 @@
           <ui-button
             class="loginBtn blueBtn"
             @click="loginSubmit"
-            :disabled="!loginInfo.id || !loginInfo.passwd"
+            :disabled="btnAbled"
             >로그인</ui-button
           >
         </div>
@@ -90,7 +90,14 @@ export default {
   computed: {
     ...mapGetters({
       g_loginState: login.STATE
-    })
+    }),
+    btnAbled() {
+      let disabled = true;
+      if (!!this.loginInfo.id && !!this.loginInfo.passwd) {
+        disabled = false;
+      }
+      return disabled;
+    }
   },
   methods: {
     ...mapActions({
@@ -106,7 +113,7 @@ export default {
       this.a_setSaveUser(id);
 
       this.$router.push({
-        name: "main"
+        name: "homeFeed"
       });
     },
     fetchContacts: function() {
@@ -258,8 +265,10 @@ export default {
           height: auto;
           cursor: pointer;
 
-          &:hover {
+          &:hover,
+          &:visited {
             background-color: transparent;
+            color: #385185;
           }
         }
       }

@@ -3,10 +3,9 @@
     version="1.0"
     xmlns="http://www.w3.org/2000/svg"
     width="120px"
-    height="60px"
     viewBox="0 0 191.000000 63.000000"
     preserveAspectRatio="xMidYMid meet"
-    :style="{ width: width, height: height }"
+    :style="{ width: width }"
     class="logo"
   >
     <g
@@ -77,7 +76,7 @@ c2 -36 -2 -76 -8 -87z"
 <script>
 export default {
   name: "Logo",
-  props: ["color", "width", "height"]
+  props: ["color", "width"]
 };
 </script>
 

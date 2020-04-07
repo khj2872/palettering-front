@@ -15,6 +15,9 @@ import ElementUI from 'element-ui';
 import KeenUI from 'keen-ui';
 // vue 무한스크롤 라이브러리추가
 import InfiniteLoading from 'vue-infinite-loading';
+import PerfectScrollbar from 'vue2-perfect-scrollbar';
+
+import 'vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css'
 
 //element-ui 언어 패키지
 import en from "element-ui/lib/locale/lang/en";
@@ -37,6 +40,7 @@ Vue.use(ElementUI, localLang);
 Vue.use(KeenUI);
 Vue.use(VueRouter);
 Vue.use(InfiniteLoading);
+Vue.use(PerfectScrollbar);
 
 const router = new VueRouter({
   mode: 'history',
