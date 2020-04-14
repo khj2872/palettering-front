@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import FindFeed from "@/components/main/FindFeed.vue";
+import FindFeed from "@/components/main/findFeed/FindFeed.vue";
 
 export default {
   name: "FindFeedView",

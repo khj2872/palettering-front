@@ -102,9 +102,9 @@
                 <span class="own-id">my_id</span>
                 <span class="own-txt">아무것도 입력할 수가 없네</span>
               </div>
-              <div class="own-time">1일 전</div>
             </div>
             <!-- <div class="follow-area"></div> -->
+            <div class="feed-time">1일 전</div>
           </div>
           <div class="cont-comd-wrap">
             <el-input
@@ -350,12 +350,12 @@ export default {
                 padding-right: 10px;
               }
             }
+          }
 
-            .own-time {
-              margin-top: 10px;
-              color: #999999;
-              font-size: 10px;
-            }
+          .feed-time {
+            margin-top: 10px;
+            color: #999999;
+            font-size: 10px;
           }
         }
 

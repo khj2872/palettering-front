@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import MyProfileFeed from "@/components/main/MyProfileFeed.vue";
+import MyProfileFeed from "@/components/main/myProfileFeed/MyProfileFeed.vue";
 
 export default {
   name: "MyProfileFeedView",

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import HomeFeed from "@/components/main/HomeFeed.vue";
+import HomeFeed from "@/components/main/homeFeed/HomeFeed.vue";
 
 export default {
   name: "HomeFeedView",
