@@ -1,7 +1,9 @@
 <template>
   <div class="header">
     <div class="logo-box">
-      <Logo :width="'110px'" />
+      <router-link to="/main/homeFeed" class="router-list">
+        <Logo :width="'110px'" />
+      </router-link>
     </div>
     <div class="search-box">
       <el-input v-model="keyword" placeholder="검색" clearable>
