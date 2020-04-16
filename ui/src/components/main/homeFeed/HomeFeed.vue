@@ -117,112 +117,27 @@
         </div>
       </div>
     </div>
-    <!-- 정보 영역 -->
+    <!-- 오른쪽 정보 영역 -->
     <div class="info-box">
-      <div class="profile-area">
-        <router-link to="/main/myProfileFeed" class="profile-link">
-          <div class="profile-photo"></div>
-          <div class="profile-info">
-            <span class="id">{{ id }}</span>
-            <span class="name">{{ name }}</span>
-          </div>
-        </router-link>
-      </div>
-      <div class="story-area">
-        <div class="story-head">
-          <span class="head-tit">스토리</span>
-          <span class="head-txt">모두보기</span>
-        </div>
-        <perfect-scrollbar class="story-cont">
-          <div class="cont-list">
-            <div class="list-status"></div>
-            <div class="list-info">
-              <span class="id">id</span>
-              <span class="time">몇시간전</span>
-            </div>
-          </div>
-          <div class="cont-list">
-            <div class="list-status"></div>
-            <div class="list-info">
-              <span class="id">id</span>
-              <span class="time">몇시간전</span>
-            </div>
-          </div>
-          <div class="cont-list">
-            <div class="list-status"></div>
-            <div class="list-info">
-              <span class="id">id</span>
-              <span class="time">몇시간전</span>
-            </div>
-          </div>
-          <div class="cont-list">
-            <div class="list-status"></div>
-            <div class="list-info">
-              <span class="id">id</span>
-              <span class="time">몇시간전</span>
-            </div>
-          </div>
-          <div class="cont-list">
-            <div class="list-status"></div>
-            <div class="list-info">
-              <span class="id">id</span>
-              <span class="time">몇시간전</span>
-            </div>
-          </div>
-        </perfect-scrollbar>
-      </div>
-      <div class="rec-area">
-        <div class="rec-head">
-          <span class="rec-tit">회원님을 위한 추천</span>
-          <span class="rec-txt">모두보기</span>
-        </div>
-        <div class="rec-cont">
-          <div class="cont-list">
-            <div class="list-info">
-              <div class="info-status"></div>
-              <div class="info-txt">
-                <span class="id">id</span>
-                <span class="txt">누구누구님이 팔로우합니다</span>
-              </div>
-            </div>
-            <ui-button type="secondary" class="list-follow">팔로우</ui-button>
-          </div>
-          <div class="cont-list">
-            <div class="list-info">
-              <div class="info-status"></div>
-              <div class="info-txt">
-                <span class="id">id</span>
-                <span class="txt">누구누구님이 팔로우합니다</span>
-              </div>
-            </div>
-            <ui-button type="secondary" class="list-follow">팔로우</ui-button>
-          </div>
-          <div class="cont-list">
-            <div class="list-info">
-              <div class="info-status"></div>
-              <div class="info-txt">
-                <span class="id">id</span>
-                <span class="txt">누구누구님이 팔로우합니다</span>
-              </div>
-            </div>
-            <ui-button type="secondary" class="list-follow">팔로우</ui-button>
-          </div>
-        </div>
-      </div>
+      <HomeFeedProfile />
+      <HomeFeedStory />
+      <HomeFeedRec />
     </div>
   </div>
 </template>
 
 <script>
+import HomeFeedProfile from "@/components/main/homeFeed/HomeFeedProfile.vue";
+import HomeFeedStory from "@/components/main/homeFeed/HomeFeedStory.vue";
+import HomeFeedRec from "@/components/main/homeFeed/HomeFeedRec.vue";
+
 export default {
   name: "HomeFeed",
   props: [],
-  components: {},
+  components: { HomeFeedProfile, HomeFeedStory, HomeFeedRec },
   data() {
     return {
-      id: "sdfds",
-      name: "sdf",
-      command: ""
+      command: "",
     };
   },
   created() {},
@@ -230,7 +145,7 @@ export default {
   mounted() {},
   watch: {},
   computed: {},
-  methods: {}
+  methods: {},
 };
 </script>
 
@@ -407,188 +322,6 @@ export default {
   .info-box {
     width: 292px;
     position: relative;
-
-    .profile-area {
-      height: 61px;
-      margin-bottom: 9px;
-
-      .profile-link {
-        display: flex;
-        align-items: center;
-        height: 61px;
-
-        .profile-photo {
-          margin: 0 14px 0 5px;
-          width: 50px;
-          height: 50px;
-          background: url("/images/main/nav-non-profile.png") no-repeat center;
-          background-size: cover;
-        }
-
-        .profile-info {
-          display: flex;
-          flex-direction: column;
-
-          .id {
-            font-size: 14px;
-            color: #262626;
-            margin-bottom: 4px;
-          }
-
-          .name {
-            font-size: 12px;
-            color: #999999;
-          }
-        }
-      }
-    }
-
-    .story-area {
-      height: 223px;
-      border: 1px solid #dbdbdb;
-      background: #ffffff;
-      border-radius: 3px;
-      padding: 0 17px;
-      margin-bottom: 12px;
-
-      .story-head {
-        display: flex;
-        height: 42px;
-        align-items: center;
-        justify-content: space-between;
-
-        .head-tit {
-          font-size: 16px;
-          letter-spacing: -1.2px;
-          color: #999999;
-        }
-
-        .head-txt {
-          font-size: 14px;
-          color: #262626;
-          letter-spacing: -1.2px;
-        }
-      }
-
-      .story-cont {
-        height: 179px;
-
-        .cont-list {
-          height: 40px;
-          display: flex;
-          align-items: center;
-
-          .list-status {
-            width: 42px;
-            height: inherit;
-            background: url("/images/main/nav-non-profile.png") no-repeat center;
-            background-size: 27px 27px;
-            background-color: #ffffff;
-            margin-right: 9px;
-          }
-
-          .list-info {
-            display: flex;
-            flex-direction: column;
-
-            .id {
-              font-size: 14px;
-              color: #262626;
-              letter-spacing: -1px;
-              margin-bottom: 3px;
-            }
-
-            .time {
-              font-size: 10px;
-              color: #999999;
-              letter-spacing: -0.75px;
-            }
-          }
-        }
-      }
-    }
-
-    .rec-area {
-      height: 198px;
-      border: 1px solid #dbdbdb;
-      background: #ffffff;
-      border-radius: 3px;
-      padding: 0 17px;
-
-      .rec-head {
-        height: 42px;
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-
-        .rec-tit {
-          font-size: 16px;
-          letter-spacing: -1.2px;
-          color: #999999;
-        }
-
-        .rec-txt {
-          font-size: 14px;
-          color: #262626;
-          letter-spacing: -1.2px;
-        }
-      }
-
-      .rec-cont {
-        .cont-list {
-          height: 30px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin: 12px 0;
-
-          .list-info {
-            display: flex;
-            align-items: center;
-
-            .info-status {
-              background: url("/images/main/nav-non-profile.png") no-repeat
-                center;
-              background-size: 27px 27px;
-              height: 30px;
-              width: 30px;
-              margin-right: 12px;
-            }
-
-            .info-txt {
-              display: flex;
-              flex-direction: column;
-
-              .id {
-                font-size: 14px;
-                color: #262626;
-                letter-spacing: -1px;
-                margin-bottom: 3px;
-              }
-
-              .txt {
-                font-size: 11px;
-                color: #999999;
-                letter-spacing: -0.75px;
-              }
-            }
-          }
-
-          .list-follow {
-            font-size: 12px;
-            color: #3897f0;
-            font-weight: bold;
-            min-width: 0px;
-            height: 20px;
-            padding: 0 0.3rem;
-
-            &:hover {
-              background: transparent;
-            }
-          }
-        }
-      }
-    }
   }
 }
 </style>
