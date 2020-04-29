@@ -5,7 +5,7 @@
       <Header />
     </div>
     <!-- 컨텐츠 영역 -->
-    <perfect-scrollbar class="cont-layout">
+    <perfect-scrollbar class="cont-layout" :options="options">
       <router-view class="cont-wrap" />
     </perfect-scrollbar>
   </div>
@@ -17,7 +17,11 @@ import Header from "@/components/common/Header.vue";
 export default {
   name: "MainView",
   data() {
-    return {};
+    return {
+      options: {
+        wheelSpeed: 0.8
+      }
+    };
   },
   components: { Header },
   computed: {},

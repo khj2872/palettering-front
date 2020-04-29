@@ -36,6 +36,7 @@ if (localStorage.getItem('lang') === 'en') {
   localLang.locale = ko;
 }
 
+
 Vue.use(ElementUI, localLang);
 Vue.use(KeenUI);
 Vue.use(VueRouter);
@@ -47,6 +48,12 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+// 타이틀변경
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title
+  next()
+})
 
 Vue.config.productionTip = false;
 

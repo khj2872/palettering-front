@@ -22,19 +22,40 @@ export const routes = [{
   {
     path: '/login',
     name: "login",
-    component: LoginView
+    component: LoginView,
+    meta: {
+      title: "palettering :: 로그인",
+      // metaTags: [{
+      //   name: 'description',
+      //   content: 'The home page of our example app.'
+      // }, ]
+    }
   },
   // 비밀번호찾기
   {
     path: '/login/passwdFind',
     name: "passwdFind",
-    component: PasswdFindView
+    component: PasswdFindView,
+    meta: {
+      title: "palettering :: 비밀번호찾기",
+      // metaTags: [{
+      //   name: 'description',
+      //   content: 'The home page of our example app.'
+      // }, ]
+    }
   },
   // 가입하기
   {
     path: '/login/join',
     name: "join",
-    component: JoinView
+    component: JoinView,
+    meta: {
+      title: "palettering :: 가입하기",
+      // metaTags: [{
+      //   name: 'description',
+      //   content: 'The home page of our example app.'
+      // }, ]
+    }
   },
   // 메인
   {
@@ -51,18 +72,39 @@ export const routes = [{
         path: 'homeFeed',
         name: 'homeFeed',
         component: HomeFeedView,
+        meta: {
+          title: "palettering :: 홈피드",
+          // metaTags: [{
+          //   name: 'description',
+          //   content: 'The home page of our example app.'
+          // }, ]
+        }
         // beforeEnter: checkAuth(),
       },
       {
         path: 'findFeed',
         name: 'findFeed',
         component: FindFeedView,
+        meta: {
+          title: "palettering :: 탐색",
+          // metaTags: [{
+          //   name: 'description',
+          //   content: 'The home page of our example app.'
+          // }, ]
+        }
         // beforeEnter: checkAuth(),
       },
       {
         path: 'myProfileFeed',
         name: 'myProfileFeed',
         component: MyProfileFeedView,
+        meta: {
+          title: "palettering :: 내프로필",
+          // metaTags: [{
+          //   name: 'description',
+          //   content: 'The home page of our example app.'
+          // }, ]
+        }
         // beforeEnter: checkAuth(),
       },
     ]
@@ -70,11 +112,25 @@ export const routes = [{
   {
     path: '/limit',
     name: 'browserLimit',
-    component: BrowserLimit
+    component: BrowserLimit,
+    meta: {
+      title: "palettering :: 제한 브라우저",
+      // metaTags: [{
+      //   name: 'description',
+      //   content: 'The home page of our example app.'
+      // }, ]
+    }
   },
   {
     path: '*',
     name: 'notFound',
-    component: NotFound
+    component: NotFound,
+    meta: {
+      title: "palettering :: 페이지를 찾을 수 없습니다",
+      // metaTags: [{
+      //   name: 'description',
+      //   content: 'The home page of our example app.'
+      // }, ]
+    }
   }
 ]

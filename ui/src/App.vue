@@ -19,24 +19,24 @@ export default {
   },
   computed: {
     ...mapGetters({
-      g_loginDevice: loginStore.DEVICE
-    })
+      g_loginDevice: loginStore.DEVICE,
+    }),
   },
   methods: {
     ...mapActions({
-      setDevice: loginStore.SET_DEVICE
+      setDevice: loginStore.SET_DEVICE,
     }),
     checkMobileDevice() {
       const device = detect();
       if (device.name !== "chrome") {
         this.$router.push({
-          name: "browserLimit"
+          name: "browserLimit",
         });
       } else {
         this.setDevice(device);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

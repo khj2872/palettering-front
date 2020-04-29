@@ -67,9 +67,7 @@
             </svg>
             게시물
           </span>
-          <div class="tab-cont posted">
-            게시물 내용
-          </div>
+          <MyProfileFeedPosted class="tab-cont" />
         </el-tab-pane>
         <el-tab-pane name="saved">
           <span slot="label">
@@ -90,9 +88,7 @@
             </svg>
             저장됨
           </span>
-          <div class="tab-cont saved">
-            저장됨 내용
-          </div>
+          <MyProfileFeedSaved class="tab-cont" />
         </el-tab-pane>
         <el-tab-pane name="tagged">
           <span slot="label">
@@ -126,9 +122,7 @@
             </svg>
             태그됨
           </span>
-          <div class="tab-cont tagged">
-            태그됨 내용
-          </div>
+          <MyProfileFeedTagged class="tab-cont" />
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -136,8 +130,13 @@
 </template>
 
 <script>
+import MyProfileFeedPosted from "@/components/main/myProfileFeed/MyProfileFeedPosted.vue";
+import MyProfileFeedSaved from "@/components/main/myProfileFeed/MyProfileFeedSaved.vue";
+import MyProfileFeedTagged from "@/components/main/myProfileFeed/MyProfileFeedTagged.vue";
+
 export default {
   name: "MyProfileFeed",
+  components: { MyProfileFeedPosted, MyProfileFeedSaved, MyProfileFeedTagged },
   data() {
     return {
       tabActive: "posted",
@@ -317,7 +316,7 @@ export default {
                 height: 52px;
                 line-height: 52px;
                 font-size: 12px;
-                  font-weight: bold;
+                font-weight: bold;
                 color: #8e8e8e;
 
                 &.is-active {
@@ -346,6 +345,8 @@ export default {
       }
 
       .el-tabs__content {
+        .tab-cont {
+        }
       }
     }
   }
