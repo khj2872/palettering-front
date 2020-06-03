@@ -1,12 +1,7 @@
 <template>
   <div class="login-box">
     <div class="visual-wrap">
-      <el-carousel
-        class="slide-area"
-        :arrow="'never'"
-        :interval="5000"
-        height="427px"
-      >
+      <el-carousel class="slide-area" :arrow="'never'" :interval="5000" height="427px">
         <el-carousel-item v-for="itemSrc in slideImg" :key="itemSrc">
           <img :src="'/images/login/' + itemSrc + '.png'" />
         </el-carousel-item>
@@ -15,42 +10,26 @@
     <div class="login-wrap">
       <div class="login-area">
         <div class="logo-area">
-          <!-- <img src="/images/logo.png" /> -->
           <Logo :color="''" :width="'191px'" :height="'63px'" />
         </div>
         <div class="input-box">
-          <el-input
-            v-model="loginInfo.id"
-            placeholder="전화번호, 사용자 이름 또는 이메일"
-          ></el-input>
-          <el-input
-            v-model="loginInfo.passwd"
-            placeholder="비밀번호"
-            show-password
-          ></el-input>
-          <ui-button
-            class="loginBtn blueBtn"
-            @click="loginSubmit"
-            :disabled="btnAbled"
-            >로그인</ui-button
-          >
+          <el-input v-model="loginInfo.id" placeholder="전화번호, 사용자 이름 또는 이메일"></el-input>
+          <el-input v-model="loginInfo.passwd" placeholder="비밀번호" show-password></el-input>
+          <ui-button class="loginBtn blueBtn" @click="loginSubmit" :disabled="btnAbled">로그인</ui-button>
         </div>
         <div class="etc-box">
           <div class="dev">또는</div>
-          <ui-button class="facebook" type="secondary"
-            >Facebook으로 로그인
+          <ui-button class="facebook" type="secondary">Facebook으로 로그인</ui-button>
+          <ui-button class="forgot" type="secondary">
+            <router-link to="/login/passwdFind">비밀번호를 잊으셨나요?</router-link>
           </ui-button>
-          <ui-button class="forgot" type="secondary"
-            ><router-link to="/login/passwdFind"
-              >비밀번호를 잊으셨나요?</router-link
-            ></ui-button
-          >
         </div>
       </div>
       <div class="forgot-area">
-        계정이 없으신가요?<span
-          ><router-link to="/login/join">가입하기</router-link></span
-        >
+        계정이 없으신가요?
+        <span>
+          <router-link to="/login/join">가입하기</router-link>
+        </span>
       </div>
     </div>
   </div>
@@ -264,6 +243,12 @@ export default {
           letter-spacing: -0.4px;
           height: auto;
           cursor: pointer;
+
+          .ui-button__content {
+            a {
+              color: #385185;
+            }
+          }
 
           &:hover,
           &:visited {

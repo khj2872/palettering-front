@@ -176,12 +176,13 @@ a {
   font-size: 100%;
   text-decoration: none;
   vertical-align: baseline;
+  color: inherit;
 
   &:hover,
   &:focus,
   &:visited {
     text-decoration: none;
-    color: inherit !important;
+    // color: inherit !important;
   }
 }
 
