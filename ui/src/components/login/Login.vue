@@ -15,7 +15,12 @@
         <div class="input-box">
           <el-input v-model="loginInfo.id" placeholder="전화번호, 사용자 이름 또는 이메일"></el-input>
           <el-input v-model="loginInfo.passwd" placeholder="비밀번호" show-password></el-input>
-          <ui-button class="loginBtn blueBtn" @click="loginSubmit" :disabled="btnAbled">로그인</ui-button>
+          <ui-button
+            class="loginBtn blueBtn"
+            @click="loginSubmit"
+            :disabled="btnAbled"
+            :loading="isLoading"
+          >로그인</ui-button>
         </div>
         <div class="etc-box">
           <div class="dev">또는</div>
@@ -57,15 +62,12 @@ export default {
         "img-login-03",
         "img-login-04",
         "img-login-05"
-      ]
+      ],
+      isLoading: false,
+      radio: "이치로"
     };
   },
-  created() {
-    this.fetchContacts();
-  },
-  destroyed() {},
-  mounted() {},
-  watch: {},
+  created() {},
   computed: {
     ...mapGetters({
       g_loginState: login.STATE
@@ -95,25 +97,126 @@ export default {
         name: "homeFeed"
       });
     },
-    fetchContacts: function() {
+    async asyncCall() {
+      console.log("calling");
+      const result = await this.resolveAfter2Seconds();
+      // expected output: 'resolved'
+    },
+    resolveAfter2Seconds() {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve("resolved");
+        }, 2000);
+      })
+        .then(function() {
+          console.log("then");
+          return;
+        })
+        .catch(function(err) {
+          console.log(err);
+        })
+        .finally(function() {
+          console.log("finally");
+        });
+    },
+    fetchContacts: async function() {
+      this.isLoading = true;
+
+      let params = [];
+
+      for (let i = 0; i < this.allResistVacation.memberId.length; i++) {
+        params.push({
+          memberId: this.allResistVacation.memberId[i],
+          vacationType: this.allResistVacation.vacationType,
+          startDate: this.startDate,
+          endDate: this.endDate,
+          reason: this.allResistVacation.reasonD
+        });
+      }
+
+      httpClient.post(url, params);
+
+      // ajax 형식
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "/api/users?page=2");
+      xhr.setRequestHeader("Content-type", "text/plain");
+      xhr.setRequestHeader("Accept", "text/plain");
+      const data = { id: 3, title: "JavaScript", author: "Park", price: 5000 };
+
+      xhr.send();
+      console.log(xhr.readyState);
+
+      xhr.onreadystatechange = function(e) {
+        if (xhr.readyState !== XMLHttpRequest.DONE) {
+          console.log(xhr.readyState, e);
+          return;
+        }
+
+        if (xhr.status >= 200) {
+          console.log(xhr.responseText);
+          console.log(xhr.readyState, e);
+        } else {
+          console.log("Error!");
+        }
+      };
+      console.log(xhr.readyState);
+
+      // axios 형식
       axios({
         method: "GET",
         url: "/api/users?page=2",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json;charset=UTF-8"
+        },
         params: {}
       })
         .then(response => {
-          // console.log(response);
-          this.result = response.data;
+          console.log(response);
+          this.result = response.data.data;
+          console.log(this.result);
         })
         .catch(ex => {
           console.log("ERR!!!!! : ", ex);
         });
+
+      // fetch 형식
+      let url = "/api/users?page=2";
+      let options = {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json;charset=UTF-8"
+        },
+        body: JSON.stringify({
+          property_one: "아저씨",
+          property_two: "아버지"
+        })
+      };
+
+      let response = await fetch(url, options);
+      let responseOk = response && response.ok;
+
+      if (responseOk) {
+        let data = await response.json();
+        console.log(data);
+      }
+
+      this.isLoading = false;
     }
   }
 };
 </script>
 
 <style lang="scss">
+.radio {
+  input {
+    width: 30px;
+    height: 30px;
+    border: 1px solid blue;
+  }
+}
 .login-box {
   display: flex;
   align-items: center;
