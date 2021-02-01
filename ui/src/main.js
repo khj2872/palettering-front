@@ -46,7 +46,14 @@ Vue.use(PerfectScrollbar);
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior() {
+    // 페이지 이동시 화면 맨 위로
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0;
+    const container = document.querySelector(".cont-layout");
+    container.scrollTop = 0;
+  }
 });
 
 // 타이틀변경

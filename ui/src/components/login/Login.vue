@@ -64,10 +64,11 @@ export default {
         "img-login-05"
       ],
       isLoading: false,
-      radio: "이치로"
     };
   },
-  created() {},
+  created() {
+    
+  },
   computed: {
     ...mapGetters({
       g_loginState: login.STATE
@@ -87,6 +88,7 @@ export default {
       a_setInitialLogin: login.INITIAL_STATE,
       a_setSaveUser: login.SET_SAVE_USER // 아이디 저장
     }),
+    // 로그인 버튼
     loginSubmit() {
       const id = this.loginInfo.id;
       const pw = this.loginInfo.passwd;
@@ -97,114 +99,6 @@ export default {
         name: "homeFeed"
       });
     },
-    async asyncCall() {
-      console.log("calling");
-      const result = await this.resolveAfter2Seconds();
-      // expected output: 'resolved'
-    },
-    resolveAfter2Seconds() {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve("resolved");
-        }, 2000);
-      })
-        .then(function() {
-          console.log("then");
-          return;
-        })
-        .catch(function(err) {
-          console.log(err);
-        })
-        .finally(function() {
-          console.log("finally");
-        });
-    },
-    fetchContacts: async function() {
-      this.isLoading = true;
-
-      let params = [];
-
-      for (let i = 0; i < this.allResistVacation.memberId.length; i++) {
-        params.push({
-          memberId: this.allResistVacation.memberId[i],
-          vacationType: this.allResistVacation.vacationType,
-          startDate: this.startDate,
-          endDate: this.endDate,
-          reason: this.allResistVacation.reasonD
-        });
-      }
-
-      httpClient.post(url, params);
-
-      // ajax 형식
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", "/api/users?page=2");
-      xhr.setRequestHeader("Content-type", "text/plain");
-      xhr.setRequestHeader("Accept", "text/plain");
-      const data = { id: 3, title: "JavaScript", author: "Park", price: 5000 };
-
-      xhr.send();
-      console.log(xhr.readyState);
-
-      xhr.onreadystatechange = function(e) {
-        if (xhr.readyState !== XMLHttpRequest.DONE) {
-          console.log(xhr.readyState, e);
-          return;
-        }
-
-        if (xhr.status >= 200) {
-          console.log(xhr.responseText);
-          console.log(xhr.readyState, e);
-        } else {
-          console.log("Error!");
-        }
-      };
-      console.log(xhr.readyState);
-
-      // axios 형식
-      axios({
-        method: "GET",
-        url: "/api/users?page=2",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json;charset=UTF-8"
-        },
-        params: {}
-      })
-        .then(response => {
-          console.log(response);
-          this.result = response.data.data;
-          console.log(this.result);
-        })
-        .catch(ex => {
-          console.log("ERR!!!!! : ", ex);
-        });
-
-      // fetch 형식
-      let url = "/api/users?page=2";
-      let options = {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json;charset=UTF-8"
-        },
-        body: JSON.stringify({
-          property_one: "아저씨",
-          property_two: "아버지"
-        })
-      };
-
-      let response = await fetch(url, options);
-      let responseOk = response && response.ok;
-
-      if (responseOk) {
-        let data = await response.json();
-        console.log(data);
-      }
-
-      this.isLoading = false;
-    }
   }
 };
 </script>

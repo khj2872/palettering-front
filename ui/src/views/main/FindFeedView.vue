@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <FindFeed />
-  </div>
+  <FindFeed />
 </template>
 
 <script>
