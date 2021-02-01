@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <MyProfileFeed />
-  </div>
+  <MyProfileFeed />
 </template>
 
 <script>

@@ -1,111 +1,12 @@
 import Vue from 'vue';
 import axios from 'axios';
 
-import { mapActions, mapGetters } from 'vuex';
-import * as currentStatus from '@/store/modules/main/currentStatus';
-
-export const version = 'v1.0.0';
-
 export const apiUrl = '/api/v1/';
 export const execUrl = '/exec/';
 
-// 조치관리
-export const requestTypeText = [
-  '예외',
-  '대체',
-  'NA',
-  '양호',
-  '취약',
-  '추후조치',
-  '수동진단',
-  '진단결과 틀림',
-  '조치중',
-  '수용',
-  '조치기한 변경',
-  '담당자 변경',
-  '삭제',
-  '담당자 교체',
-  '현황 변경',
-  '참고사항 변경'
-];
-
-export const approvalStatusText = ['승인대기', '처리중', '승인완료', '승인반려', '자동승인', '사전조치', '추후조치'];
-
-// 사용자 UI의 공통 기능
-export const mixinFunc = {
-  created() {},
-  data() {
-    return {
-      loading: false
-    };
-  },
-  computed: {
-    ...mapGetters({
-      g_dialog: currentStatus.DIALOG,
-      g_dlDetail: currentStatus.DIALOGDATA
-    })
-  },
-  methods: {
-    ...mapActions({
-      a_setDialog: currentStatus.SET_DIALOG
-    }),
-    // 하위 컴포넌트의 props를 가져온다.
-    getChildProps(name, value) {
-      this[name] = value;
-    },
-    // 각 input에 해당하는 에러 정보 반환
-    inputError(name) {
-      let errorObj = {};
-      if (this.errors.items) {
-        this.errors.items.map(item => {
-          if (item.field === name) {
-            errorObj = item;
-          }
-        });
-      }
-      return errorObj;
-    },
-    isValidInput(errors) {
-      return errors.items.length > 0 ? false : true;
-    },
-    /* ---------- 다이어로그 --------------
-      name:이름 - 필수
-      type:상태 - 닫기일때 제외하고 필수 (빈값이면 자동으로 close) | "normal" or "min" or ""
-      position: 상속 페이지 - 필수,
-      data:데이터 - 필요에따라 선택 
-    */
-    changeDialog(name, type, title, position, data) {
-      event.stopPropagation();
-
-      const dialogCnt = Object.keys(this.g_dlDetail);
-
-      if (!!!this.loading) {
-        this.loading = true;
-
-        if (dialogCnt.length < 6) {
-          const params = {
-            name: name,
-            type: type,
-            title: title,
-            position: position,
-            data: data
-          };
-
-          this.a_setDialog(params);
-        } else {
-          // 임시 alert
-          alert('최대 5개 알림창만 오픈 가능합니다. 알림창을 닫은 후 다시 시도해주세요.');
-        }
-      }
-
-      this.loading = false;
-    }
-  }
-};
 
 // axios 표준 템플릿
 export const requestRaw = (url, params, method, isFile) => {
-  // console.log('commonFunc - requestRaw');
   params = params || {};
   const lowerMethod = method.toLowerCase();
   let dataType = 'params';
@@ -127,38 +28,6 @@ export const requestRaw = (url, params, method, isFile) => {
   }
 
   return axios(axiosData);
-};
-
-// axios 표준 템플릿
-// export const requestRaw = (url, params, method) => {
-//   // console.log('commonFunc - requestRaw');
-//   params = params || {};
-//   const lowerMethod = method.toLowerCase();
-//   let dataType = 'params';
-
-//   if (lowerMethod === 'post' || lowerMethod === 'put') {
-//     dataType = 'data';
-//   }
-
-//   return axios({
-//     method: method,
-//     url: url,
-//     [dataType]: params
-//   });
-// };
-
-// 체크박스 로직
-export const checkBoxResult = beforeValue => {
-  let afterValue;
-  // Indeterminate & 전체선택일때 -> 전체 해제
-  if (beforeValue === 1 || beforeValue === 2) {
-    afterValue = 0;
-    // 전체 선택일때는 전체 해제
-  } else {
-    afterValue = 2;
-  }
-
-  return afterValue;
 };
 
 // API Data format

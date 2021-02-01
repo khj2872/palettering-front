@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="logo-box">
-      <router-link to="/main/homeFeed" class="router-list">
+      <router-link to="/main/home" class="router-list">
         <Logo :width="'110px'" />
       </router-link>
     </div>

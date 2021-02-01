@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import main from './modules/main';
 import login from './modules/login';
+import post from './modules/post';
 
 Vue.use(Vuex)
 
@@ -12,7 +13,8 @@ export const store = new Vuex.Store({
   strict: true,
   modules: {
     main,
-    login
+    login,
+    post
   }
 })
 

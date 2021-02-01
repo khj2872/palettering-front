@@ -19,13 +19,14 @@ export default {
   data() {
     return {
       options: {
-        wheelSpeed: 0.8
+        wheelSpeed: 0.8,
+        swipeEasing: true
       }
     };
   },
   components: { Header },
   computed: {},
-  methods: {},
+  methods: {}
 };
 </script>
 
@@ -54,10 +55,12 @@ export default {
     margin-top: 54px;
     height: calc(100vh - 54px);
     width: 100%;
+    overflow: auto;
 
     .cont-wrap {
       width: 953px;
       margin: 0 auto;
+      padding: 20px 0;
     }
   }
 }
